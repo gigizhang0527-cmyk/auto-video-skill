@@ -9,7 +9,12 @@
 ```
 https://github.com/gigizhang0527-cmyk/auto-video-skill
 ```
-Agent 会自动拉取项目并安装所需依赖（FFmpeg、Whisper 等）。
+
+**⚠️ 重要：Agent 安装完成后，必须运行以下命令启动安全配置向导：**
+```bash
+python scripts/install.py
+```
+这会自动打开浏览器和记事本，**逐步引导**您完成 API 配置，**不会在聊天中显示 API Key**。
 
 ### 2. 配置 API（安全方式）
 安装完成后，运行安全配置向导：
