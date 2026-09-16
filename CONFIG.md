@@ -3,10 +3,13 @@
 本 Skill 依赖以下 API 服务。请在使用前完成配置。
 
 ## 1. 炳火 API (BingHuo)
-*   **用途**：生图 (gpt-image-2) + 动画 (Seedance/SD2.5)
+*   **用途**：生图 (GPT IMAGE 2.5)
 *   **注册链接**：[点击注册 (使用推荐码)](https://api.7tai.cc/register?aff=xJ8H)
+*   **价格参考**：
+    *   [主价格表 (飞书)](https://mcn1eoufbabt.feishu.cn/wiki/D0XMwr2EXibFsQkd2Z0ctO5WnUg)
+    *   [备用价格表 (飞书)](https://mcn1eoufbabt.feishu.cn/wiki/UWujw9W9yiXBLXkKHfacSabFnuc)
+    *   **注意**：请使用您自己的飞书账号查看，不要使用他人的授权账号。
 *   **获取 API Key**：登录后在「个人中心」获取 API Key。
-*   **价格参考**：请参考 [官方价格表](https://api.7tai.cc/pricing)。
 
 ## 2. 小米开放平台 (MiMo & TTS)
 *   **用途**：视频画面质量检查 (QC) + 语音合成 (TTS)
