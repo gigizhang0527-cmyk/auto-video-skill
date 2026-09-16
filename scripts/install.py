@@ -36,9 +36,10 @@ def main():
     
     print()
     
-    # 2. 运行配置向导
-    print("🔑 正在启动配置向导...")
-    print("   请按照提示完成 API 配置。")
+    # 2. 运行配置向导（安全版本）
+    print("🔑 正在启动安全配置向导...")
+    print("   向导会自动打开浏览器和记事本，请按照提示完成配置。")
+    print("   ⚠️  API Key 将直接保存到本地文件，不会在聊天中显示。")
     print()
     
     if run_command(f"python {script_dir / 'onboarding.py'}", check=False):
