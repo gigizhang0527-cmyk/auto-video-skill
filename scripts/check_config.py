@@ -20,47 +20,52 @@ def load_config():
         if config_path.exists():
             try:
                 with open(config_path, 'r', encoding='utf-8') as f:
-                    return json.load(f), config_path
+                    content = f.read().strip()
+                    if not content:  # 文件为空
+                        return None, config_path
+                    return json.loads(content), config_path
+            except json.JSONDecodeError:
+                return None, config_path
             except Exception as e:
                 pass
     
     return None, None
 
-def check_api_key(key_name, key_value):
+def check_api_key(key_name, key_value, platform_name, register_url):
     """检查 API Key 是否有效"""
     if not key_value:
-        return False, "未配置"
+        return False, f"{platform_name} API Key 未配置"
     
-    if key_value.startswith("YOUR_"):
-        return False, "未填写（仍为占位符）"
+    if key_value.startswith("YOUR_") or key_value == "":
+        return False, f"{platform_name} API Key 未填写（仍为占位符）"
     
     if len(key_value) < 10:
-        return False, "长度异常（可能不完整）"
+        return False, f"{platform_name} API Key 长度异常（可能不完整）"
     
-    return True, "✅ 已配置"
+    return True, f"{platform_name} API Key ✅ 已配置"
 
 def check_ffmpeg():
     """检查 FFmpeg 是否可用"""
     import shutil
     if shutil.which("ffmpeg"):
-        return True, "✅ 已安装"
-    return False, "未安装"
+        return True, "FFmpeg ✅ 已安装"
+    return False, "FFmpeg 未安装"
 
 def check_whisper():
     """检查 Whisper 是否可用"""
     try:
         import faster_whisper
-        return True, "✅ 已安装"
+        return True, "faster-whisper ✅ 已安装"
     except ImportError:
         pass
     
     try:
         import whisper
-        return True, "✅ 已安装"
+        return True, "openai-whisper ✅ 已安装"
     except ImportError:
         pass
     
-    return False, "未安装"
+    return False, "Whisper 未安装"
 
 def main():
     """主检查流程"""
@@ -73,34 +78,40 @@ def main():
     
     # 检查配置文件
     config, config_path = load_config()
-    if config:
-        print(f"📁 配置文件：{config_path}")
-    else:
-        print("❌ 未找到配置文件，请先运行配置向导")
+    if config is None:
+        print("❌ 未找到有效的配置文件，请先运行配置向导")
         print("   python scripts/onboarding.py")
         return 1
     
+    print(f"📁 配置文件：{config_path}")
     print()
+    
+    # 检查配置文件内容
+    if not config:
+        print("⚠️  配置文件为空，请运行配置向导填写 API Key")
+        print("   python scripts/onboarding.py")
+        return 1
+    
     print("📋 API 配置检查：")
     print("-" * 40)
     
     # 检查炳火 API
-    ok, status = check_api_key("炳火 API", config.get("binghuo_api_key"))
-    print(f"  炳火 API (生图)：{status}")
+    ok, status = check_api_key("binghuo_api_key", config.get("binghuo_api_key"), "炳火", "https://api.7tai.cc/register?aff=xJ8H")
+    print(f"  {status}")
     if not ok:
         all_ok = False
         print(f"    → 注册链接：https://api.7tai.cc/register?aff=xJ8H")
     
     # 检查小米 MiMo
-    ok, status = check_api_key("小米 MiMo", config.get("xiaomi_api_key"))
-    print(f"  小米 MiMo (审片 & TTS)：{status}")
+    ok, status = check_api_key("xiaomi_api_key", config.get("xiaomi_api_key"), "小米 MiMo", "https://platform.xiaomimimo.com?ref=YGUXWL")
+    print(f"  {status}")
     if not ok:
         all_ok = False
         print(f"    → 注册链接：https://platform.xiaomimimo.com?ref=YGUXWL")
     
     # 检查 Agnes
-    ok, status = check_api_key("Agnes", config.get("agnes_api_key"))
-    print(f"  Agnes (视频生成)：{status}")
+    ok, status = check_api_key("agnes_api_key", config.get("agnes_api_key"), "Agnes", "https://www.agnes-ai.com/")
+    print(f"  {status}")
     if not ok:
         all_ok = False
         print(f"    → 注册链接：https://www.agnes-ai.com/")
@@ -111,14 +122,14 @@ def main():
     
     # 检查 FFmpeg
     ok, status = check_ffmpeg()
-    print(f"  FFmpeg (视频处理)：{status}")
+    print(f"  {status}")
     if not ok:
         all_ok = False
         print(f"    → 安装命令：python scripts/setup.py")
     
     # 检查 Whisper
     ok, status = check_whisper()
-    print(f"  Whisper (语音识别)：{status}")
+    print(f"  {status}")
     if not ok:
         all_ok = False
         print(f"    → 安装命令：pip install faster-whisper")
