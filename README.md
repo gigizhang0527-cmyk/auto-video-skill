@@ -25,7 +25,11 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
     *   **必须使用 Agnes** 进行视频生成
     *   **必须使用参考图模式**：将步骤 2 生成的图片作为参考图输入 Agnes
     *   **禁止使用文生视频**：不要只给文字描述，必须给图
-5.  **总装 (FFmpeg)**：
+    *   **限制**：单段时长 ≤12秒
+5.  **音频检测**：
+    *   检测 Agnes 生成的视频是否带有背景音乐
+    *   如果有，需重出或处理（保留音效，去除 BGM）
+6.  **总装 (FFmpeg)**：
     *   拼接视频、音频、字幕
 
 ## 🔑 API 职责划分
@@ -42,6 +46,8 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
     *   ✅ **正确**：使用 Agnes 生视频。
 *   ❌ **错误**：使用文生视频 (Text-to-Video)。
     *   ✅ **正确**：使用图生视频 (Image-to-Video)，即参考图模式。
+*   ❌ **错误**：忽略音频检测。
+    *   ✅ **正确**：必须检测并处理 Agnes 视频的随机 BGM。
 
 ## 📜 许可证
 MIT License
