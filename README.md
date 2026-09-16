@@ -24,7 +24,7 @@
 **核心依赖：**
 | 服务 | 用途 | 注册链接 |
 |------|------|----------|
-| **炳火 API** | 生图 & 动画 | [点击注册 (含推荐码)](https://api.7tai.cc/register?code=YOUR_CODE) |
+| **炳火 API** | 生图 & 动画 | [点击注册 (含推荐码)](https://api.7tai.cc/register?code=YOUR_CODE_HERE) |
 | **小米 MiMo** | 视觉审片 & QC | [小米账号登录](https://account.xiaomi.com/pass/qr/login) |
 | **MiniMax** | 语音合成 (TTS) | [MiniMax 开放平台](https://www.minimaxi.com/) |
 
