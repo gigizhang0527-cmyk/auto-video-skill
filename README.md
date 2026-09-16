@@ -47,7 +47,7 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
 
 *   ❌ **错误**：先画图再定时间。
     *   ✅ **正确**：先生成 SRT 确定时间，再画图。
-*   ❌ **错误**：使用文生视频。
+*   ❌ **错误**：使用文生视频 (Text-to-Video)。
     *   ✅ **正确**：必须使用参考图模式 (Image-to-Video)。
 *   ❌ **错误**：忽略音频检测。
     *   ✅ **正确**：必须检测并处理 BGM。
