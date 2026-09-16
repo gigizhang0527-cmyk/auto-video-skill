@@ -21,7 +21,7 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
 4.  **镜头切分**：根据 SRT 切分场景。
 5.  **参考图生成 (炳火 API)**：
     *   使用 **GPT IMAGE 2.5** 为每个镜头生成静态参考图。
-    *   **自动上传**：生成的图片会自动上传到免费图床，获取公网 URL。
+    *   **自动上传**：生成的图片会自动上传到 GitHub 仓库，获取公网 URL。
 6.  **视频生成 (Agnes API)**：
     *   **必须使用 Agnes** 的**参考图模式**。
     *   输入：参考图 URL + 动作提示词 + 时长。
@@ -30,11 +30,11 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
 
 ## 💡 图片托管说明
 
-由于 Agnes 需要公网 URL 来访问参考图，本项目内置了**免费图床上传功能**：
-*   **Catbox.moe**：免费，无需注册，永久存储。
-*   **Telegraph**：备用方案，速度快。
-
-**无需自建服务器或阿里云主机**，生成图片后自动上传并获取 URL。
+由于 Agnes 需要公网 URL 来访问参考图，本项目使用 **GitHub 仓库**作为图床：
+*   **原理**：自动创建一个名为 `auto-video-skill-assets` 的仓库。
+*   **上传**：生成图片后自动提交到该仓库。
+*   **获取 URL**：使用 `raw.githubusercontent.com` 链接作为公网 URL。
+*   **优势**：无需额外服务器，利用 GitHub 的全球 CDN，速度快且稳定。
 
 ## 🔑 API 职责划分
 
