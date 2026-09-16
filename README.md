@@ -21,20 +21,26 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
 4.  **镜头切分**：根据 SRT 切分场景。
 5.  **参考图生成 (炳火 API)**：
     *   使用 **GPT IMAGE 2.5** 为每个镜头生成静态参考图。
-    *   **自动上传**：生成的图片会自动上传到 GitHub 仓库，获取公网 URL。
+    *   **图片传递**：支持 Base64 Data URI (首选) 或 GitHub URL (备选)。
 6.  **视频生成 (Agnes API)**：
     *   **必须使用 Agnes** 的**参考图模式**。
-    *   输入：参考图 URL + 动作提示词 + 时长。
+    *   输入：参考图 (Base64 或 URL) + 动作提示词 + 时长。
+    *   **速率限制**：免费用户需间隔 60 秒。
 7.  **音频检测**：检测并去除随机背景音乐。
 8.  **总装 (FFmpeg)**：拼接视频、旁白、字幕。
 
-## 💡 图片托管说明
+## 💡 图片传递方案
 
-由于 Agnes 需要公网 URL 来访问参考图，本项目使用 **GitHub 仓库**作为图床：
-*   **原理**：自动创建一个名为 `auto-video-skill-assets` 的仓库。
-*   **上传**：生成图片后自动提交到该仓库。
-*   **获取 URL**：使用 `raw.githubusercontent.com` 链接作为公网 URL。
-*   **优势**：无需额外服务器，利用 GitHub 的全球 CDN，速度快且稳定。
+Agnes API 支持两种方式传递参考图：
+
+1.  **Base64 Data URI (首选/推荐)**：
+    *   直接将图片转为 Base64 编码，嵌入到 API 请求中。
+    *   **优势**：无需上传、无需图床、最稳定、无 SSL 问题。
+    *   **格式**：`data:image/png;base64,iVBOR...`
+
+2.  **GitHub URL (备选)**：
+    *   自动创建 `auto-video-skill-assets` 仓库，上传图片获取 `raw.githubusercontent.com` 链接。
+    *   **优势**：利用 GitHub CDN，适合需要分享图片链接的场景。
 
 ## 🔑 API 职责划分
 
@@ -44,6 +50,12 @@ https://github.com/gigizhang0527-cmyk/auto-video-skill
 | **Whisper** | SRT | 语音转文字 (本地) |
 | **炳火 API** | 生图 | **仅限 GPT IMAGE 2.5** |
 | **Agnes** | 生视频 | **必须使用参考图模式** |
+
+## ⚠️ 避坑指南
+
+*   **Agnes 速率限制**：免费用户请求间隔需 ≥60秒。
+*   **字段提取**：从 Agnes 响应中提取 `url` 字段（非 `metadata.url`）。
+*   **音频检测**：Agnes 视频可能带有随机 BGM，需检测并去除。
 
 ## 📜 许可证
 MIT License
