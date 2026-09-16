@@ -5,7 +5,7 @@
 
 ## 1. 炳火 API (BingHuo)
 *   **用途**：生图 (gpt-image-2) + 动画 (Seedance/SD2.5)
-*   **注册链接**：[点击注册 (使用推荐码)](https://api.7tai.cc/register?code=YOUR_CODE_HERE)
+*   **注册链接**：[点击注册 (使用推荐码)](https://api.7tai.cc/register?aff=xJ8H)
 *   **获取 API Key**：登录后在「个人中心」获取 API Key。
 *   **价格参考**：请参考 [官方价格表](https://api.7tai.cc/pricing)。
 
