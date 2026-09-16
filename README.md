@@ -9,30 +9,45 @@
 - **精准成本控制**：内置实时价格核对机制（飞书文档），避免意外扣费。
 - **严格质控**：内置 V10 方法论（舞台主图 + 图生图链），确保角色和场景一致性。
 
-## 🛠️ 快速开始
+## 🚀 快速开始
 
-### 1. 环境准备
-请确保运行环境已安装：
-- [FFmpeg](https://ffmpeg.org/download.html) (需加入 PATH)
-- [Python](https://www.python.org/) (可选，用于脚本)
-
-### 2. 配置 API 密钥 (必填)
-本 Skill 依赖以下 API 服务。请在首次运行前完成配置。
-
-**核心依赖：**
-| 服务 | 用途 | 注册链接 | 价格参考 |
-|------|------|----------|----------|
-| **炳火 API** | 生图 (GPT IMAGE 2.5) | [点击注册](https://api.7tai.cc/register?aff=xJ8H) | [价格表 (飞书)](https://mcn1eoufbabt.feishu.cn/wiki/D0XMwr2EXibFsQkd2Z0ctO5WnUg) |
-| **小米 MiMo** | 视觉审片 & QC & TTS | [小米开放平台](https://platform.xiaomimimo.com/console/api-keys) | - |
-| **Agnes** | 视频生成 (参考) | [Agnes 官网](https://www.agnes-ai.com/) | - |
-
-> ⚠️ **首次运行**：Agent 会自动引导您填写 API Key。配置文件通常位于 `~/.agents/config/auto-video-skill-config.json`。
-
-### 3. 安装 Skill
+### 1. 一键安装（推荐）
 ```bash
-# 在您的 Agent 中执行安装命令 (以 DeepSeek Harness 为例)
+# 克隆仓库
+git clone https://github.com/gigizhang0527-cmyk/auto-video-skill.git
+cd auto-video-skill
+
+# 运行安装脚本（自动安装 FFmpeg、Python 依赖、Whisper）
+python scripts/setup.py
+
+# 配置 API 密钥
+python scripts/configure.py
+```
+
+### 2. 手动安装
+如果您更喜欢手动安装，请参考 [详细安装指南](INSTALL.md)。
+
+### 3. 使用 Skill
+```bash
+# 运行完整工作流
+python scripts/run_workflow.py --input "您的文案.txt" --project "项目名称"
+
+# 或在 DeepSeek Harness 中使用
 /install-skill https://github.com/gigizhang0527-cmyk/auto-video-skill
 ```
+
+## 📦 依赖说明
+
+本项目需要以下依赖（安装脚本会自动处理）：
+
+| 依赖 | 用途 | 安装方式 |
+|------|------|----------|
+| **FFmpeg** | 视频处理 | 自动安装或手动下载 |
+| **Python 3.8+** | 脚本运行 | 手动安装 |
+| **faster-whisper** | 语音转文字 (SRT) | pip install faster-whisper |
+| **其他 Python 库** | 图像处理、HTTP 请求等 | pip install -r requirements.txt |
+
+> ⚠️ **注意**：FFmpeg 和 Whisper 都是本地运行的工具，安装脚本会自动下载并配置。
 
 ## 📂 项目结构
 - `references/`: 核心方法论文档 (V10、封面规范、字幕规范等)
