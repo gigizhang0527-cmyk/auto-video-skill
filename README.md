@@ -16,7 +16,7 @@
 - [DeepSeek Harness](https://github.com/DeepSeek/DSH)
 - [FFmpeg](https://ffmpeg.org/download.html) (需加入 PATH)
 - [Python](https://www.python.org/) (可选，用于脚本)
-- [HyperFrames](https://github.com/DeepSeek/HyperFrames) (可选，用于动画编排)
+- [HyperFrames](https://github.com/DeepSeek/HyperFrames) (可选，用于更精细的动画编排和组装，本项目默认使用 FFmpeg 自动化组装)
 
 ### 2. 配置 API 密钥 (必填)
 本 Skill 依赖多个外部 API。请访问我们的 **[统一配置文档](https://github.com/gigizhang0527-cmyk/auto-video-skill/blob/main/CONFIG.md)** 获取详细的申请指引和配置方法。
