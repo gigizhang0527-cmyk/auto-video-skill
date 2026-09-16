@@ -5,16 +5,16 @@
 ## 🚀 三步上手
 
 ### 1. 安装 Skill
-将以下链接发送给您的 AI Agent：
+将以下链接发送给您的 AI Agent，并附带指令：
 ```
+帮我安装这个项目，安装完成后自动运行 python scripts/install.py 进行配置：
 https://github.com/gigizhang0527-cmyk/auto-video-skill
 ```
 
-**⚠️ 重要：Agent 安装完成后，必须运行以下命令启动安全配置向导：**
-```bash
-python scripts/install.py
-```
-这会自动打开浏览器和记事本，**逐步引导**您完成 API 配置，**不会在聊天中显示 API Key**。
+**💡 提示：** 
+- Agent 会自动克隆仓库并安装依赖
+- 安装完成后会**自动运行**安全配置向导
+- 向导会逐步引导您完成 API 配置，**不会在聊天中显示 API Key**
 
 ### 2. 配置 API（安全方式）
 安装完成后，运行安全配置向导：
