@@ -9,7 +9,8 @@
 ## 仓库内容
 1. **README.md**: 项目介绍、快速开始指南、API 配置说明
 2. **CONFIG.md**: 详细的 API 配置指南，包含所有服务的注册链接
-3. **references/v10-stage-chain-method.md**: V10 方法论文档
+3. **SUMMARY.md**: 仓库总结文档
+4. **references/v10-stage-chain-method.md**: V10 方法论文档
 
 ## 核心功能
 - ✅ 全流程自动化：文案脚本 → TTS 旁白 → SRT 时间轴 → 参考图生成 → 动画分镜 → FFmpeg 总装
