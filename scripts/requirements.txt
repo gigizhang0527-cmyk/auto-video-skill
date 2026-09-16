@@ -1,0 +1,23 @@
+﻿# 视频处理
+ffmpeg-python>=0.2.0
+
+# 语音识别
+faster-whisper>=1.2.0
+
+# 图像处理
+Pillow>=10.0.0
+
+# HTTP 请求
+requests>=2.31.0
+
+# JSON 处理
+json5>=0.9.14
+
+# 文件操作
+pathlib2>=2.3.7
+
+# 进度条
+tqdm>=4.66.0
+
+# 音频处理
+pydub>=0.25.1
