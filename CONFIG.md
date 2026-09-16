@@ -1,4 +1,3 @@
-
 # 🔑 API 配置指南
 
 本 Skill 依赖以下 API 服务。请在使用前完成配置。
@@ -9,15 +8,15 @@
 *   **获取 API Key**：登录后在「个人中心」获取 API Key。
 *   **价格参考**：请参考 [官方价格表](https://api.7tai.cc/pricing)。
 
-## 2. 小米 MiMo (视觉审片)
-*   **用途**：视频画面质量检查 (QC)
-*   **登录链接**：[小米账号统一登录](https://account.xiaomi.com/pass/qr/login)
-*   **获取 Token**：登录后在开发者中心申请 MiMo-v2.5 模型权限。
+## 2. 小米开放平台 (MiMo & TTS)
+*   **用途**：视频画面质量检查 (QC) + 语音合成 (TTS)
+*   **管理链接**：[小米开放平台控制台](https://platform.xiaomimimo.com/console/api-keys)
+*   **获取 API Key**：登录后在「API 密钥管理」中创建。
 
-## 3. MiniMax (TTS)
-*   **用途**：语音克隆与合成
-*   **登录链接**：[MiniMax 开放平台](https://www.minimaxi.com/)
-*   **获取 API Key**：在「API 密钥管理」中创建。
+## 3. Agnes (视频生成)
+*   **用途**：AI 视频生成 (参考/备选)
+*   **官网链接**：[Agnes AI](https://www.agnes-ai.com/)
+*   **获取 API Key**：注册后获取。
 
 ## 4. 飞书 (Lark) - 可选
 *   **用途**：SRT 时间轴提取 (飞书妙记)
@@ -26,12 +25,12 @@
 ---
 
 ## 配置文件位置
-请将获取的 API Key 填入 Skill 的配置文件中 (通常位于 `~/.agents/config/kepu-video-config.json`)。
+请将获取的 API Key 填入 Skill 的配置文件中 (通常位于 `~/.agents/config/auto-video-skill-config.json`)。
 
 ```json
 {
   "binghuo_api_key": "YOUR_BINGHUO_KEY",
-  "mimo_api_key": "YOUR_MIMO_KEY",
-  "minimax_api_key": "YOUR_MINIMAX_KEY"
+  "xiaomi_api_key": "YOUR_XIAOMI_API_KEY",
+  "agnes_api_key": "YOUR_AGNES_API_KEY"
 }
 ```
